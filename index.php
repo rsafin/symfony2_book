@@ -1,16 +1,7 @@
 <?php
 //index.php
-$db = mysql_connect("localhost", "root", "");
-mysql_select_db("symfony_book", $db);
+require_once 'model.php';
 
-$result = mysql_query('SELECT id, title FROM post', $db);
-
-$posts = array();
-while ($row = mysql_fetch_assoc($result)) {
-    $posts[] = $row;
-}
-
-mysql_close($db);
+$posts = get_all_posts();
 
 require 'templates/list.php';
-
